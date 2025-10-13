@@ -1381,7 +1381,10 @@ cdef class Solver:
             swmm_getValue(
                 property=SWMMSystemProperties.CURRENT_DATE.value,
                 index=0
-            ) - self._total_duration
+            ) - swmm_getValue(
+                property=SWMMSystemProperties.START_DATE.value,
+                index=0
+            )
         ) / self._total_duration
         
         self.__execute_progress_callbacks(progress)
